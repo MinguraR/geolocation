@@ -1,6 +1,6 @@
 pipeline {
         triggers {
-  pollSCM '* * * * *'
+  pollSCM('* * * * *')
 }
     agent any
     tools {
@@ -25,7 +25,7 @@ pipeline {
             
              stage('deploy') {
             steps {
-                echo 'deploy'
+                echo 'deployment'
                 
             }
         }
