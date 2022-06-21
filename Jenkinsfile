@@ -36,8 +36,9 @@ pipeline {
         stage('Pushing to ECR') {
             steps{
                 script {
+                    sh "docker tag emax_ecr_rep:latest 598296426280.dkr.ecr.ap-south-1.amazonaws.com/emax_ecr_rep:latest"
                     sh "aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 598296426280.dkr.ecr.ap-south-1.amazonaws.com"
-                    sh "docker push 598296426280.dkr.ecr.ap-south-1.amazonaws.com/emax_ecr_rep"
+                    sh "docker push 598296426280.dkr.ecr.ap-south-1.amazonaws.com/emax_ecr_rep:latest"
                       
                 }
             }
