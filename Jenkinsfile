@@ -40,6 +40,7 @@ pipeline {
                     sh 'docker push 598296426280.dkr.ecr.ap-south-1.amazonaws.com/emax_ecr_rep:$BUILD_NUMBER'
                 }
             }
+        }
         //deploy the image that is in ECR to our EKS cluster
         stage ("Kube Deploy") {
             steps {
