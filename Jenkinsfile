@@ -38,7 +38,13 @@ pipeline {
                 script {
                     sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 598296426280.dkr.ecr.ap-south-1.amazonaws.com/emax_ecr_rep'
                     sh 'docker push 598296426280.dkr.ecr.ap-south-1.amazonaws.com/emax_ecr_rep:$BUILD_NUMBER'
-                      
+                }
+            }
+        //deploy the image that is in ECR to our EKS cluster
+        stage ("Kube Deploy") {
+            steps {
+                withKubeConfig([credentialsId: 'eks_credential', serverUrl: '']) {
+                 sh "kubectl apply -f eks_deploy_from_ecr.yaml"
                 }
             }
         }
