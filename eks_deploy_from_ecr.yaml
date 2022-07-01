@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: geolocation-ecr-rep-app
-        image: 598296426280.dkr.ecr.ap-south-1.amazonaws.com/emax_ecr_rep:22
+        image: 598296426280.dkr.ecr.ap-south-1.amazonaws.com/emax_ecr_rep:"$BUILD_NUMBER"
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
